@@ -8,7 +8,7 @@ import Trending from "./Trending";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import db from "../firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
 
@@ -21,8 +21,9 @@ const Home = () => {
     let trending = [];
 
     useEffect(() => {
-        db.collection("movies").onSnapshot((snapshot) => {
+        onSnapshot(collection(db,"movies"), (snapshot) => {
             snapshot.docs.map((doc) => {
+                console.log(recommends);
                 switch(doc.data().type) {
                     case 'recommend':
                         recommends = [...recommends, {id: doc.id, ...doc.data()}]
@@ -38,13 +39,13 @@ const Home = () => {
                         break;
                 }
             });
+            dispatch(setMovies({
+                recommend: recommends,
+                newDisney: newDisneys,
+                original: originals,
+                trending: trending
+            }));
         });
-        dispatch(setMovies({
-            recommend: recommends,
-            newDisney: newDisneys,
-            original: originals,
-            trending: trending
-        }))
     }, [userName]);
 
     return (
