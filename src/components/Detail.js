@@ -19,6 +19,7 @@ const Detail = (props) => {
     }, [id]);
 
 /* 
+    Not working properly
     useEffect(() => {
     db.collection("movies")
       .doc(id)
