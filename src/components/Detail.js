@@ -11,31 +11,14 @@ const Detail = (props) => {
     useEffect(() => {
         const docRef = doc(db, "movies", id);
         const docSnap = getDoc(docRef);
-        if (docSnap.exists()) {
-            setDetailData(docSnap.data());
-        } else {
-            console.log("No such document in firebase 🔥");
+        docSnap.then(docSnap => {
+            if (docSnap.exists()) {
+                setDetailData(docSnap.data());
+            } else {
+                console.log("No such document in firebase 🔥");
+            }
         }
-    }, [id]);
-
-/* 
-    Not working properly
-    useEffect(() => {
-    db.collection("movies")
-      .doc(id)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setDetailData(doc.data());
-        } else {
-          console.log("no such document in firebase 🔥");
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-    }, [id]);
-*/
+    )},[id]);
     
     return (
         <Container>
