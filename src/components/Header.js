@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectUserEmail, selectUserPhoto, selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import { selectUserPhoto, selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
 import { useEffect } from "react";
 
 const Header = (props) => {
@@ -11,7 +12,6 @@ const Header = (props) => {
     const navigate = useNavigate(); //const history = useHistory();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
-    const useremail = useSelector(selectUserEmail);
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {

@@ -22,19 +22,24 @@ const Home = () => {
 
     useEffect(() => {
         onSnapshot(collection(db,"movies"), (snapshot) => {
+            // eslint-disable-next-line array-callback-return
             snapshot.docs.map((doc) => {
-                console.log(recommends);
+                // eslint-disable-next-line default-case
                 switch(doc.data().type) {
                     case 'recommend':
+                        // eslint-disable-next-line react-hooks/exhaustive-deps
                         recommends = [...recommends, {id: doc.id, ...doc.data()}]
                         break;
                     case 'new':
+                        // eslint-disable-next-line react-hooks/exhaustive-deps
                         newDisneys = [...newDisneys, {id: doc.id, ...doc.data()}]
                         break;
-                    case 'original':
+                        case 'original':
+                        // eslint-disable-next-line react-hooks/exhaustive-deps
                         originals = [...originals, {id: doc.id, ...doc.data()}]
                         break;
                     case 'trending':
+                        // eslint-disable-next-line react-hooks/exhaustive-deps
                         trending = [...trending, {id: doc.id, ...doc.data()}]
                         break;
                 }

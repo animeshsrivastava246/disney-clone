@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import db from "../firebase";
 
-const Detail = (props) => {
+const Detail = () => {
     const { id } = useParams();
     const [detailData, setDetailData] = useState({});
     
@@ -26,7 +26,7 @@ const Detail = (props) => {
                 <img src={detailData.backgroundImg} alt={detailData.title} />
             </Background>
             <ImageTitle>
-                <img src={detailData.titleImg} alt={detailData.title} />
+                <img await src={detailData.titleImg} alt={detailData.title} />
             </ImageTitle>
             <ContentMeta>
                 <Controls>
