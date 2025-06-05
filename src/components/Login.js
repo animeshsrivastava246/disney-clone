@@ -1,12 +1,56 @@
 import styled from "styled-components";
+import { auth, provider } from "../firebase";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectUserPhoto, selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import { useEffect } from "react";
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); //const history = useHistory();
+    const userName = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if(user) {
+                setUser(user);
+                navigate("/home");
+            }
+        })
+    }, [userName]);
+
+    const handleAuth= () => {
+        if(!userName) {
+            signInWithPopup(auth, provider).then((result) => {
+                setUser(result.user);
+            }).catch((error) => {
+                alert(error.message);
+            });
+        } else if (userName) {
+            signOut(auth).then(() => {
+                dispatch(setSignOutState());
+                navigate("/");
+            }).catch((err) => {
+                alert(err.message);
+            });
+        }
+    }
+
+    const setUser = (user) => {
+        dispatch(setUserLoginDetails({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+        }));
+    }
     return (
         <Container>
             <Content>
                 <CTA>
                     <CTALogoOne src="/images/cta-logo-one.svg" alt="This is an image"/>
-                    <SignUp>JOIN</SignUp>
+                    <SignUp onClick={handleAuth}>JOIN</SignUp>
                     <Discription>Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription. As of 03/26/21, the price of Disney+ and The Disney Bundle will increase by $1.</Discription>
                     <CTALogoTwo src="/images/cta-logo-two.png" alt="This is an image"/>
                 </CTA>
