@@ -51,6 +51,7 @@ const Header = (props) => {
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+" />
+                <p>CLONE</p>
             </Logo>
 
             {!userName ? 
