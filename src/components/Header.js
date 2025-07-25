@@ -51,7 +51,7 @@ const Header = (props) => {
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+" />
-                <p>CLONE</p>
+                <p>THIS IS A CLONE!!</p>
             </Logo>
 
             {!userName ? 
@@ -113,17 +113,29 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.a`
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 0;
-    width: 80px;
+    width: auto;
     margin-top: 4px;
     max-height: 70px;
-    font-size: 0;
-    display: inline-block;
+
     img {
         display: block;
-        width: 100%;
+        width: 80px;
+    }
+
+    p {
+        color: #ffcc00;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px black;
     }
 `;
+
 
 const NavMenu = styled.div`
     align-items: center;
