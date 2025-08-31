@@ -3,14 +3,15 @@ import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectUserPhoto, selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+// import { selectUserPhoto, selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import { selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
 import { useEffect } from "react";
 
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate(); //const history = useHistory();
     const userName = useSelector(selectUserName);
-    const userPhoto = useSelector(selectUserPhoto);
+    // const userPhoto = useSelector(selectUserPhoto);
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
@@ -19,6 +20,7 @@ const Login = () => {
                 navigate("/home");
             }
         })
+        //eslint-disable-next-line
     }, [userName]);
 
     const handleAuth= () => {
