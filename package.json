@@ -1,7 +1,10 @@
 {
   "name": "disney-clone",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
