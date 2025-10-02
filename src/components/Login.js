@@ -15,7 +15,7 @@ const Login = () => {
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
-            if(user) {
+            if (user) {
                 setUser(user);
                 navigate("/home");
             }
@@ -23,8 +23,8 @@ const Login = () => {
         //eslint-disable-next-line
     }, [userName]);
 
-    const handleAuth= () => {
-        if(!userName) {
+    const handleAuth = () => {
+        if (!userName) {
             signInWithPopup(auth, provider).then((result) => {
                 setUser(result.user);
             }).catch((error) => {
@@ -51,12 +51,12 @@ const Login = () => {
         <Container>
             <Content>
                 <CTA>
-                    <CTALogoOne src="/images/cta-logo-one.svg" alt="This is an image"/>
+                    <CTALogoOne src="/images/cta-logo-one.svg" alt="This is an image" />
                     <SignUp onClick={handleAuth}>JOIN</SignUp>
                     <Discription>Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription. As of 03/26/21, the price of Disney+ and The Disney Bundle will increase by $1.</Discription>
-                    <CTALogoTwo src="/images/cta-logo-two.png" alt="This is an image"/>
+                    <CTALogoTwo src="/images/cta-logo-two.png" alt="This is an image" />
                 </CTA>
-                <BgImage/>
+                <BgImage />
             </Content>
         </Container>
     )
@@ -120,6 +120,7 @@ margin-bottom: 12px;
 width: 100%;
 letter-spacing: 1.5px;
 font-size: 18px;
+cursor: pointer;
 padding: 16.5px 0;
     border: 1px solid transparent;
     border-radius: 4px;
