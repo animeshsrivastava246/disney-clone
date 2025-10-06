@@ -30,7 +30,7 @@ const Login = () => {
             }).catch((error) => {
                 alert(error.message);
             });
-        } else if (userName) {
+        } else {
             signOut(auth).then(() => {
                 dispatch(setSignOutState());
                 navigate("/");
