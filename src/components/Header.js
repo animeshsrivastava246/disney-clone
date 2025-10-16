@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const Header = (props) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate(); //const history = useHistory();
+    const navigate = useNavigate();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
@@ -51,7 +51,7 @@ const Header = (props) => {
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+" />
-                <p>THIS IS A CLONE!!</p>
+                <p>THIS IS A CLONE!! Only for educational purposes!!</p>
             </Logo>
 
             {!userName ? 
