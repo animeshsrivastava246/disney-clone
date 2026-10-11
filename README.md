@@ -1,5 +1,7 @@
 # Disney+ Old Style UI Clone
 
+### Major changes are coming through!!
+
 A React-based clone of the classic Disney+ landing page, built to practice modern React, routing, state management, and styled-components.
 
 ## Features
